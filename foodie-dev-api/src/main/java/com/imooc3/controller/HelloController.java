@@ -9,6 +9,6 @@ public class HelloController {
 
     @GetMapping("/hello")
     public Object hello(){
-        return "hello World";//直接返还出去
+        return "hello Mapper";//直接返还出去
     }
 }
