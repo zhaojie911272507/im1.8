@@ -11,3 +11,4 @@ com\imooc3\mapper\ItemsCommentsMapper.class
 com\imooc3\mapper\UsersMapper.class
 com\imooc3\mapper\OrderStatusMapper.class
 com\imooc3\mapper\CarouselMapper.class
+com\imooc3\mapper\StuMapper.class
