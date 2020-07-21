@@ -1,4 +1,5 @@
 com\imooc3\pojo\Stu.class
+com\imooc3\pojo\io\UserBO.class
 com\imooc3\pojo\Items.class
 com\imooc3\pojo\ItemsComments.class
 com\imooc3\pojo\UserAddress.class

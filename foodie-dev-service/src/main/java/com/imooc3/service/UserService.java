@@ -1,0 +1,21 @@
+package com.imooc3.service;
+
+import com.imooc3.pojo.Users;
+import com.imooc3.pojo.io.UserBO;
+
+public interface UserService {
+    /**
+     *
+     * 判断用户名是否存在
+     * @param username
+     * @return
+     */
+    public boolean queryUsernameIsExist(String username);
+
+    /**
+     * 创建用户
+     * @param userBO
+     * @return
+     */
+    public Users createUser(UserBO userBO);
+}
