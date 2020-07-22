@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration/*配置要被扫描到就要加上*/
 @EnableSwagger2  /*开启Swagger2配置*/
-public class Swagger {
+public class Swagger2 {
 
     //文档访问地址：http:// localhost:8088/swagger-ui.html         官方原路径
     //文档访问地址：http:// localhost:8088/doc.html        另一个

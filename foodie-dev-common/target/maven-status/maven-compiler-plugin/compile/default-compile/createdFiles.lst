@@ -1,3 +1,4 @@
+com\imooc3\utils\JsonUtils.class
 org\n3r\idworker\Id.class
 org\n3r\idworker\strategy\DefaultRandomCodeStrategy.class
 com\imooc3\utils\DateUtil.class
@@ -18,6 +19,7 @@ org\n3r\idworker\utils\Utils.class
 org\n3r\idworker\DayCode.class
 org\n3r\idworker\strategy\DayPrefixRandomCodeStrategy.class
 org\n3r\idworker\IdWorker.class
+com\imooc3\utils\CookieUtils.class
 org\n3r\idworker\strategy\DefaultWorkerIdStrategy$1.class
 org\n3r\idworker\utils\Serializes.class
 org\n3r\idworker\InvalidSystemClock.class

@@ -72,5 +72,19 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Transactional(propagation= Propagation.SUPPORTS)
+    @Override
+    public Users queryUserForLogin(String username , String password) {
+
+        Example userExample = new Example(Users.class);
+        Example.Criteria userCrteria = userExample.createCriteria();
+
+        userCrteria.andEqualTo("username",username);
+        userCrteria.andEqualTo("password",password);/*这里的属性要和pojo里的属性一致，而不是和数据库一致，因为mapper逆向工具生成的实体类有下划线的是驼峰式命名了*/
+
+        Users result = usersMapper.selectOneByExample(userExample);
+
+        return result;
+    }
 
 }

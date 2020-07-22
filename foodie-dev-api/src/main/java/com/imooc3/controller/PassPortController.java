@@ -1,14 +1,19 @@
 package com.imooc3.controller;
 
+import com.imooc3.pojo.Users;
 import com.imooc3.pojo.io.UserBO;
+import com.imooc3.utils.CookieUtils;
 import com.imooc3.utils.IMOOCJSONResult;
 import com.imooc3.service.UserService;
+import com.imooc3.utils.JsonUtils;
+import com.imooc3.utils.MD5Utils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Api(value = "注册登录",tags = "用于注册登录的相关接口")
 @RestController
@@ -28,7 +33,7 @@ public class PassPortController {
         //2.查找注册的用户名是否存在
         boolean isExist=userService.queryUsernameIsExist(username);
         if(isExist){
-            return IMOOCJSONResult.errorMsg("用户名不能为空");
+            return IMOOCJSONResult.errorMsg("用户名已存在");
         }
 
         //3.请求成功，用户名没有重复;200代表请求成功。
@@ -37,7 +42,9 @@ public class PassPortController {
 
     @ApiOperation(value = "用户注册", notes = "用户注册", httpMethod = "POST")
     @PostMapping("/regist")
-    public IMOOCJSONResult regist(@RequestBody UserBO userBO){/*由于前段返回的是一个json对象，所以这里加上@RequestBody*/
+    public IMOOCJSONResult regist(@RequestBody UserBO userBO,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response){/*由于前段返回的是一个json对象，所以这里加上@RequestBody*/
         String username = userBO.getUsername();
         String password = userBO.getPassword();
         String confirmPwd = userBO.getConfirmPassword();
@@ -66,7 +73,69 @@ public class PassPortController {
         }
 
         // 4. 实现注册
-        userService.createUser(userBO);
+        Users userResult = userService.createUser(userBO);
+
+        userResult = setNullProperty(userResult);
+
+        CookieUtils.setCookie(request,response,"user",
+                JsonUtils.objectToJson(userResult),true);
+
+        // TODO 生成用户token，存入redis会话
+        // TODO 同步购物车数据
+
+        return IMOOCJSONResult.ok();
+    }
+
+    @ApiOperation(value = "用户登录", notes = "用户登录", httpMethod = "POST")
+    @PostMapping("/login")
+    public IMOOCJSONResult login(@RequestBody UserBO userBO,
+                                 HttpServletRequest request,
+                                 HttpServletResponse response) throws Exception {/*由于前段返回的是一个json对象，所以这里加上@RequestBody*/
+        String username = userBO.getUsername();
+        String password = userBO.getPassword();
+
+        // 0. 判断用户名和密码必须不为空
+        if (StringUtils.isBlank(username) ||
+                StringUtils.isBlank(password) ) {
+            return IMOOCJSONResult.errorMsg("用户名或密码不能为空");
+        }
+
+        // 1. 实现登录
+        Users userResult = userService.queryUserForLogin(username, MD5Utils.getMD5Str(password));
+
+        if(userResult == null ) {
+            return IMOOCJSONResult.errorMsg("用户名或密码不正确");
+        }
+
+        userResult = setNullProperty(userResult);
+
+        CookieUtils.setCookie(request,response,"user",
+                JsonUtils.objectToJson(userResult),true);
+
+
+        return IMOOCJSONResult.ok(userResult);
+    }
+    private Users setNullProperty(Users userResult) {
+        userResult.setPassword(null);
+        userResult.setMobile(null);
+        userResult.setEmail(null);
+        userResult.setCreatedTime(null);
+        userResult.setUpdatedTime(null);
+        userResult.setBirthday(null);
+        return userResult;
+    }
+
+    @ApiOperation(value = "用户退出登录", notes = "用户退出登录", httpMethod = "POST")
+    @PostMapping("/logout")
+    public IMOOCJSONResult logout(@RequestParam String userId,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) {
+
+        // 清除用户的相关信息的cookie
+        CookieUtils.deleteCookie(request, response, "user");
+
+        // TODO 用户退出登录，需要清空购物车
+        // TODO 分布式会话中需要清除用户数据
 
         return IMOOCJSONResult.ok();
     }
