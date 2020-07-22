@@ -2,13 +2,17 @@ G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\ItemsPara
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\Items.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\OrderStatus.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\OrderItems.java
+G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\vo\CategoryVO.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\ItemsComments.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\Carousel.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\Stu.java
+G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\vo\SimpleItemVO.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\ItemsImg.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\Category.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\io\UserBO.java
+G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\vo\SubCategoryVO.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\ItemsSpec.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\Orders.java
+G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\vo\NewItemsVO.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\UserAddress.java
 G:\workspaces\com.imooc3\foodie-dev-pojo\src\main\java\com\imooc3\pojo\Users.java

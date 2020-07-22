@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.test.TransTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 12.258 s <<< FAILURE! - in com.test.TransTest
-myTest(com.test.TransTest)  Time elapsed: 3.382 s  <<< ERROR!
-java.lang.ArithmeticException: / by zero
-	at com.test.TransTest.myTest(TransTest.java:24)
-

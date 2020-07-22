@@ -19,7 +19,7 @@ spring:
   datasource:                                     #数据源的相关配置
     type: com.zaxxer.hikari.HikariDataSource      #数据源类型:HikariCP
     driver-class-name: com.mysql.jdbc.Driver      #mysql驱动
-    url: jdbc:mysql://localhost:3306/foodie-shop?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    url: jdbc:mysql://localhost:3306/foodie-shop-dev?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
     username: root
     password: ROOT
     hikari:
@@ -48,6 +48,9 @@ spring:
 mybatis:
   type-aliases-package: com.imooc3.pojo #所有pojo 类所在包路径
   mapper-locations: classpath:mapper/*.xml  #mapper映射文件
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 #######################################
 #
 #mybatis mapper 配置

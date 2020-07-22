@@ -1,5 +1,8 @@
 com\imooc3\Application.class
+com\imooc3\config\Swagger2.class
 com\imooc3\controller\StufooController.class
 com\imooc3\aspect\ServiceLogAspect.class
 com\imooc3\controller\HelloController.class
+com\imooc3\controller\IndexController.class
+com\imooc3\config\CorsConfig.class
 com\imooc3\controller\PassPortController.class
