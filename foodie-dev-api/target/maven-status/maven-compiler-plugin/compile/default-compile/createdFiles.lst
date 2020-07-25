@@ -1,4 +1,5 @@
 com\imooc3\Application.class
+com\imooc3\controller\ItemsController.class
 com\imooc3\config\Swagger2.class
 com\imooc3\controller\StufooController.class
 com\imooc3\aspect\ServiceLogAspect.class

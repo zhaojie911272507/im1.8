@@ -1,13 +1,10 @@
 package com.imooc3.service.Impl;
 
-import com.imooc3.mapper.CarouselMapper;
 import com.imooc3.mapper.CategoryMapper;
 import com.imooc3.mapper.CategoryMapperCustom;
-import com.imooc3.pojo.Carousel;
 import com.imooc3.pojo.Category;
 import com.imooc3.pojo.vo.CategoryVO;
 import com.imooc3.pojo.vo.NewItemsVO;
-import com.imooc3.service.CarouselService;
 import com.imooc3.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

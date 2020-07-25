@@ -27,14 +27,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private Sid sid;
 
-    private static final String USER_FACE="http://122.152.205.72:88/group1/M00/00/05/CpoxxFw_8_qAIlFXAAAcIhVPdSg994.png";
+        private static final String USER_FACE="http://122.152.205.72:88/group1/M00/00/05/CpoxxFw_8_qAIlFXAAAcIhVPdSg994.png";
 
-    @Transactional(propagation= Propagation.SUPPORTS)
-    @Override
-    public boolean queryUsernameIsExist(String username) {
+        @Transactional(propagation= Propagation.SUPPORTS)
+        @Override
+        public boolean queryUsernameIsExist(String username) {
 
-        Example userExample = new Example(Users.class);
-        Example.Criteria userCrteria = userExample.createCriteria();
+            Example userExample = new Example(Users.class);
+            Example.Criteria userCrteria = userExample.createCriteria();
 
         userCrteria.andEqualTo("username",username);
         Users result = usersMapper.selectOneByExample(userExample);/*用Users用于接收*/

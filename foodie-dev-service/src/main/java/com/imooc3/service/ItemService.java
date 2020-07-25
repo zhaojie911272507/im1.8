@@ -1,0 +1,58 @@
+package com.imooc3.service;
+
+import com.imooc3.pojo.Items;
+import com.imooc3.pojo.ItemsImg;
+import com.imooc3.pojo.ItemsParam;
+import com.imooc3.pojo.ItemsSpec;
+import com.imooc3.pojo.vo.CommentLevelCountsVO;
+import com.imooc3.pojo.vo.ItemCommentVO;
+import com.imooc3.pojo.vo.SearchItemVO;
+import com.imooc3.utils.PagedGridResult;
+
+import java.util.List;
+
+public interface ItemService {
+    /**
+     * 根据商品ID查询详情
+     * @param itemId
+     * @return
+     */
+    public Items queryItemById(String itemId);/*因为后期要分库分表，就要使用全局唯一id，就使用到String类型*/
+
+    /**
+     * 根据商品ID查询商品图片列表
+     * @param itemId
+     * @return
+     */
+    public List<ItemsImg> queryItemImgList(String itemId);
+
+    /**
+     * 根据商品ID查询规格
+     * @param itemId
+     * @return
+     */
+    public List<ItemsSpec> queryItemSpecList(String itemId);
+
+    /**
+     *根据商品ID查询商品参数
+     * @param itemId
+     * @return
+     */
+    public ItemsParam queryItemParam(String itemId);/*参数只需要获取单条数据就可以了，所以ItemsParam*/
+
+    /**
+     * 根据商品ID查询商品参的评价等级数量
+     * @param itemId
+     */
+    public CommentLevelCountsVO queryCommentCounts(String itemId);
+
+    /**
+     * 根据商品id查询商品的评价（分页）
+     * @param itemId
+     * @param level
+     * @return
+     */
+    public PagedGridResult queryPagedComments(String itemId, Integer level, Integer page, Integer pageSize);
+
+    public SearchItemVO searchItem();
+}
