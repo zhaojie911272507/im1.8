@@ -1,7 +1,7 @@
 package com.imooc3.service;
 
 import com.imooc3.pojo.Users;
-import com.imooc3.pojo.io.UserBO;
+import com.imooc3.pojo.bo.UserBO;
 
 public interface UserService {
     /**

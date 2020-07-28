@@ -5,7 +5,7 @@ package com.imooc3.service.Impl;
 import com.imooc3.enums.Sex;
 import com.imooc3.mapper.UsersMapper;
 import com.imooc3.pojo.Users;
-import com.imooc3.pojo.io.UserBO;
+import com.imooc3.pojo.bo.UserBO;
 import com.imooc3.service.UserService;
 
 import com.imooc3.utils.DateUtil;

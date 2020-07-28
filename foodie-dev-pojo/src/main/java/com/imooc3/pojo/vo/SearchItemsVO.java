@@ -3,7 +3,7 @@ package com.imooc3.pojo.vo;
 /**
  * 展示商品搜索列表结果的VO
  */
-public class SearchItemVO {
+public class SearchItemsVO {
     private String itemId;
     private String itemName;
     private int sellCounts;

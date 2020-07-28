@@ -2,11 +2,14 @@ package com.imooc3.service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.github.pagehelper.page.PageMethod;
 import com.imooc3.enums.CommentLevel;
 import com.imooc3.mapper.*;
 import com.imooc3.pojo.*;
 import com.imooc3.pojo.vo.CommentLevelCountsVO;
 import com.imooc3.pojo.vo.ItemCommentVO;
+import com.imooc3.pojo.vo.SearchItemsVO;
+import com.imooc3.pojo.vo.ShopcartVO;
 import com.imooc3.service.ItemService;
 import com.imooc3.utils.DesensitizationUtil;
 import com.imooc3.utils.PagedGridResult;
@@ -16,9 +19,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -34,6 +35,7 @@ public class ItemServiceImpl implements ItemService {
     private ItemsCommentsMapper itemsCommentsMapper;
     @Autowired
     private ItemsMapperCustom itemsMapperCustom;
+
 
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
@@ -129,10 +131,11 @@ public class ItemServiceImpl implements ItemService {
             vo.setNickname(DesensitizationUtil.commonDisplay(vo.getNickname()));
         }
 
-        return setterPagedGride(list, page);
+        return setterPagedGrid(list, page);
     }
 
-    private  PagedGridResult setterPagedGride(List<?> list, Integer page) {/*因为是共用化。所以不用指定哪个类，用？就可以*/
+
+    private  PagedGridResult setterPagedGrid(List<?> list, Integer page) {/*因为是共用化。所以不用指定哪个类，用？就可以*/
         PageInfo<?> pageList = new PageInfo<>(list);
         PagedGridResult grid = new PagedGridResult();
         grid.setPage(page);
@@ -141,5 +144,47 @@ public class ItemServiceImpl implements ItemService {
         grid.setRecords(pageList.getTotal());
 
         return grid;
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public PagedGridResult searchItems(String keywords,
+                                       String sort,
+                                       Integer page,
+                                       Integer pageSize) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("keywords", keywords);
+        map.put("sort", sort);
+
+        PageHelper.startPage(page, pageSize);
+        List<SearchItemsVO> list=itemsMapperCustom.searchItems(map);
+
+
+        return setterPagedGrid(list, page);
+    }
+
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public PagedGridResult searhItems(Integer catId, String sort, Integer page, Integer pageSize) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("catId", catId);
+        map.put("sort", sort);
+
+        PageHelper.startPage(page, pageSize);
+        List<SearchItemsVO> list = itemsMapperCustom.searchItemsByThirdCat(map);
+
+        return setterPagedGrid(list, page);
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public List<ShopcartVO> queryItemsBySpecIds(String specIds) {
+
+        String ids[] = specIds.split(",");
+        List<String> specIdsList = new ArrayList<>();
+        Collections.addAll(specIdsList, ids);
+
+        return itemsMapperCustom.queryItemsBySpecIds(specIdsList);
     }
 }

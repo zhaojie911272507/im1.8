@@ -25,4 +25,6 @@ G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\Worker
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\strategy\DayPrefixRandomCodeStrategy.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\com\imooc3\enums\YesOrNo.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\IdWorker.java
+G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\com\imooc3\utils\DesensitizationUtil.java
+G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\com\imooc3\utils\MobileEmailUtils.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\Code.java
