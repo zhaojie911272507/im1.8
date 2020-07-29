@@ -6,6 +6,7 @@ G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\strate
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\com\imooc3\utils\DateUtil.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\InvalidSystemClock.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\utils\Serializes.java
+G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\com\imooc3\enums\PayMethod.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\utils\Props.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\DayCode.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\Id.java
@@ -17,6 +18,7 @@ G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\Sid.ja
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\utils\Utils.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\com\imooc3\utils\PagedGridResult.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\utils\IPv4Utils.java
+G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\com\imooc3\enums\OrderStatusEnum.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\strategy\DefaultWorkerIdStrategy.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\strategy\FileLock.java
 G:\workspaces\com.imooc3\foodie-dev-common\src\main\java\org\n3r\idworker\Test.java

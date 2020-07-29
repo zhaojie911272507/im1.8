@@ -5,8 +5,10 @@ com\imooc3\service\CarouselService.class
 com\imooc3\service\StuService.class
 com\imooc3\service\TestTransService.class
 com\imooc3\service\Impl\ItemServiceImpl.class
+com\imooc3\service\Impl\OrderServiceImpl.class
 com\imooc3\service\CategoryService.class
 com\imooc3\service\ItemService.class
 com\imooc3\service\Impl\CategoryServiceImpl.class
 com\imooc3\service\Impl\StuServiceImpl.class
 com\imooc3\service\Impl\TestTransServiceImpl.class
+com\imooc3\service\OrderService.class
