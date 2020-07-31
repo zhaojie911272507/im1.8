@@ -2,6 +2,7 @@ com\imooc3\Application.class
 com\imooc3\controller\ItemsController.class
 com\imooc3\config\Swagger2.class
 com\imooc3\controller\HelloController.class
+com\imooc3\config\WebMvcConfig.class
 com\imooc3\controller\ShopcartController.class
 com\imooc3\config\CorsConfig.class
 com\imooc3\controller\StufooController.class

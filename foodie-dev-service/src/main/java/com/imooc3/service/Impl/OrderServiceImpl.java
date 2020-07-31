@@ -2,15 +2,18 @@ package com.imooc3.service.Impl;
 
 import com.imooc3.enums.OrderStatusEnum;
 import com.imooc3.enums.YesOrNo;
-import com.imooc3.mapper.*;
+import com.imooc3.mapper.OrderItemsMapper;
+import com.imooc3.mapper.OrderStatusMapper;
+import com.imooc3.mapper.OrdersMapper;
 import com.imooc3.pojo.*;
-import com.imooc3.pojo.bo.AddressBO;
 import com.imooc3.pojo.bo.SubmitOrderBO;
+import com.imooc3.pojo.vo.MerchantOrdersVO;
+import com.imooc3.pojo.vo.OrderVO;
 import com.imooc3.service.AddressService;
 import com.imooc3.service.ItemService;
 import com.imooc3.service.OrderService;
+import com.imooc3.utils.DateUtil;
 import org.n3r.idworker.Sid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -24,7 +27,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrdersMapper ordersMapper;
-
     @Autowired
     private Sid sid;
     @Autowired
@@ -38,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public String createOrder(SubmitOrderBO submitOrderBO) {
+    public OrderVO createOrder(SubmitOrderBO submitOrderBO) {
         String userId = submitOrderBO.getUserId();
         String addressId = submitOrderBO.getAddressId();
         String itemSpecIds = submitOrderBO.getItemSpecIds();
@@ -121,7 +123,20 @@ public class OrderServiceImpl implements OrderService {
             waitPayOrderStatus.setOrderStatus(OrderStatusEnum.WAIT_PAY.type);
             waitPayOrderStatus.setCreatedTime(new Date());
             orderStatusMapper.insert(waitPayOrderStatus);
-            return orderId;
+
+            //4.构建商户订单，用于传给支付中心
+             MerchantOrdersVO merchantOrdersVO = new MerchantOrdersVO();
+             merchantOrdersVO.setMerchantOrderId(orderId);
+             merchantOrdersVO.setMerchantUserId(userId);
+             merchantOrdersVO.setAmount(realPayAmount + postAmount);
+             merchantOrdersVO.setPayMethod(payMethod);
+
+             //5.构建自定义订单vo
+             OrderVO orderVO = new OrderVO();
+             orderVO.setOrderId(orderId);
+             orderVO.setMerchantOrdersVO(merchantOrdersVO);
+
+            return orderVO;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -136,5 +151,32 @@ public class OrderServiceImpl implements OrderService {
         orderStatusMapper.updateByPrimaryKeySelective(paidStatus);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void closeOrder() {
 
+        // 查询所有未付款订单，判断时间是否超时（1天），超时则关闭交易
+        OrderStatus queryOrder = new OrderStatus();
+        queryOrder.setOrderStatus(OrderStatusEnum.WAIT_PAY.type);
+        List<OrderStatus> list = orderStatusMapper.select(queryOrder);
+        for (OrderStatus os : list) {
+            // 获得订单创建时间
+            Date createdTime = os.getCreatedTime();
+            // 和当前时间进行对比
+            int days = DateUtil.daysBetween(createdTime, new Date());
+            if (days >= 1) {
+                // 超过1天，关闭订单
+                doCloseOrder(os.getOrderId());
+            }
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    void doCloseOrder(String orderId) {
+        OrderStatus close = new OrderStatus();
+        close.setOrderId(orderId);
+        close.setOrderStatus(OrderStatusEnum.CLOSE.type);
+        close.setCloseTime(new Date());
+        orderStatusMapper.updateByPrimaryKeySelective(close);
+    }
 }
