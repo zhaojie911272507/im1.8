@@ -12,3 +12,5 @@ com\imooc3\service\Impl\CategoryServiceImpl.class
 com\imooc3\service\Impl\StuServiceImpl.class
 com\imooc3\service\Impl\TestTransServiceImpl.class
 com\imooc3\service\OrderService.class
+com\imooc3\service\center\CenterUserService.class
+com\imooc3\service\Impl\center\CenterUserServiceImpl.class

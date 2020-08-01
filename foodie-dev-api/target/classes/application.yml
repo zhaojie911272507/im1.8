@@ -23,22 +23,18 @@ spring:
     username: root
     password: ROOT
     hikari:
-      connection-timeout: 30000
-      minimum-idle: 5
-      maximum-pool-size: 10
-      auto-commit: true
-      idle-timeout: 60000
-      pool-name: DateSoutceHikariCP
-      connection-test-query: SELECT 1
-#  hikari:
-#    connection-timeout: 30000 #等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLWxception，默认:30秒
-#    minimum-idle: 5           #最小连接数
-#    maximum-pool-size: 10     #最大连接数
-#    auto-commit: true         #自动提交
-#    idle-timeout: 600000      #连接超时的最大时长（毫秒），超时则被释放（retired），默认：10分钟
-#    pool-name: DateSourceHikariCP  #连接池名字
-#    max-lifetime: 1800000      #连接的声明时长（毫秒），超时而且没被使用则被释放（retired），默认30分钟 1800000ms
-#    connection-test-query: SELECT 1   #最小连接数
+      connection-timeout: 30000        #等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLWxception，默认:30秒
+      minimum-idle: 5                  #最小连接数
+      maximum-pool-size: 10            #最大连接数
+      auto-commit: true                #自动提交
+      idle-timeout: 60000              #连接超时的最大时长（毫秒），超时则被释放（retired），默认：10分钟
+      pool-name: DateSoutceHikariCP    #连接池名字
+      max-lifetime: 180000             #连接的声明时长（毫秒），超时而且没被使用则被释放（retired），默认30分钟 1800000ms
+      connection-test-query: SELECT 1  #最小连接数
+  servlet:
+    multipart:
+      max-file-size: 512000     #文件上传大小限制为500kb
+      max-request-size: 512000  #请求大小限制为500kb
 
 #####################################
 #

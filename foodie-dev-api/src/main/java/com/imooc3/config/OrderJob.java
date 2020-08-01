@@ -19,7 +19,7 @@ public class OrderJob {
      * 2. 不支持集群
      *      单机没毛病，使用集群后，就会有多个定时任务
      *      解决方案：只使用一台计算机节点，单独用来运行所有的定时任务
-     * 3. 会对数据库全表搜索，及其影响数据库性能：select * from order where orderStatus = 10;
+     * 3. 会对数据库全表搜索，极其影响数据库性能：select * from order where orderStatus = 10;
      * 定时任务，仅仅只适用于小型轻量级项目，传统项目
      *
      * 后续课程会涉及到消息队列：MQ-> RabbitMQ, RocketMQ, Kafka, ZeroMQ...
@@ -27,7 +27,7 @@ public class OrderJob {
      *      10:12分下单的，未付款（10）状态，11:12分检查，如果当前状态还是10，则直接关闭订单即可
      */
 
-   @Scheduled(cron = "0/3 * * * * ?")
+//    @Scheduled(cron = "0/3 * * * * ?")
 //    @Scheduled(cron = "0 0 0/1 * * ?")
     public void autoCloseOrder() {
         orderService.closeOrder();
