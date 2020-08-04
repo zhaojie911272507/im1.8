@@ -8,6 +8,7 @@ com\imooc3\pojo\vo\SubCategoryVO.class
 com\imooc3\pojo\Users.class
 com\imooc3\pojo\ItemsParam.class
 com\imooc3\pojo\Stu.class
+com\imooc3\pojo\vo\MyCommentVO.class
 com\imooc3\pojo\vo\NewItemsVO.class
 com\imooc3\pojo\vo\CategoryVO.class
 com\imooc3\pojo\ItemsComments.class
@@ -18,4 +19,5 @@ com\imooc3\pojo\Category.class
 com\imooc3\pojo\OrderItems.class
 com\imooc3\pojo\vo\SimpleItemVO.class
 com\imooc3\pojo\Orders.class
+com\imooc3\pojo\bo\center\OrderItemsCommentBO.class
 com\imooc3\pojo\ItemsSpec.class

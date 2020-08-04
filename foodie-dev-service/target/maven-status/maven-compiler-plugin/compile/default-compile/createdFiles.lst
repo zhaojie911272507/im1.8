@@ -1,3 +1,4 @@
+com\imooc3\service\Impl\center\MyCommentsServiceImpl.class
 com\imooc3\service\Impl\CarouselServiceImpl.class
 com\imooc3\service\Impl\UserServiceImpl.class
 com\imooc3\service\UserService.class
@@ -12,5 +13,6 @@ com\imooc3\service\Impl\CategoryServiceImpl.class
 com\imooc3\service\Impl\StuServiceImpl.class
 com\imooc3\service\Impl\TestTransServiceImpl.class
 com\imooc3\service\OrderService.class
+com\imooc3\service\center\MyCommentsService.class
 com\imooc3\service\center\CenterUserService.class
 com\imooc3\service\Impl\center\CenterUserServiceImpl.class
